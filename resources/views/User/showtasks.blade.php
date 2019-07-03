@@ -35,8 +35,13 @@ $tasks = $user->tasks;
                                                  class="btn btn-primary btn-rounded btn-sm my-0">Edit</button></a></span>
                         </td>
                         <td>
-              <span class="table-remove"><button type="button"
-                                                 class="btn btn-danger btn-rounded btn-sm my-0">Delete</button></span>
+
+                            <span class="table-remove"><form action="{{ route('Task.destroy',['id'=>$task->id])}}" method="post">
+                                <input class="btn btn-danger btn-rounded btn-sm my-0" type="submit" value="Delete" />
+                                @method('delete')
+                                @csrf
+                            </form></span>
+
                         </td>
                     </tr>
 @endforeach

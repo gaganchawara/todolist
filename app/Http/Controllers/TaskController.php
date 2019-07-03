@@ -43,5 +43,11 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         return view('Task.show',compact('task'));
     }
+
+    public function destroy($id){
+//        echo "lol";
+        Task::find($id)->delete();
+        return redirect()->route('User.tasks');
+    }
 }
 
