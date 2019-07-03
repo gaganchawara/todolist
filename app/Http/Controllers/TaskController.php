@@ -36,6 +36,8 @@ class TaskController extends Controller
         $task->status=$request->status;
         $task->user_id=$request->user_id;
         $task->deadline=$request->deadline;
+//        return $task;
+        $task->save();
         return redirect()->route('Task.show',['id'=>$task->id]);
     }
 

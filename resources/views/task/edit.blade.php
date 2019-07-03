@@ -11,7 +11,8 @@
                     <div class="card-header">{{ __('EDIT TAST') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{Route('Task.store')}}">
+                        <form method="POST" action="{{Route('Task.update')}}">
+                            @method('PATCH')
                             @csrf
 
                             <div class="form-group row">
@@ -44,12 +45,13 @@
                                 </div>
                             </div>
 
+                            <input id="id" type="hidden" class="form-control" name="id" value="{{$id}}">
                             <input id="role" type="hidden" class="form-control" name="role" value="Admin">
                             <input id="user_id" type="hidden" class="form-control" name="user_id" value="{{Auth::id()}}">
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('CREATE TASK') }}
+                                        {{ __('UPDATE TASK') }}
                                     </button>
                                 </div>
                             </div>

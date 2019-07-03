@@ -25,7 +25,7 @@ Route::post('/task','TaskController@store')->name('Task.store');
 
 Route::get('/Task/{id}', 'TaskController@show')->name('Task.show');
 
-Route::patch('/task/{id}/update', 'TaskController@update')->name('Task.update');
+Route::patch('/task/update', 'TaskController@update')->name('Task.update');
 
 Route::delete('/task/{id}/delete', 'TaskController@destroy')->name('Task.destroy');
 
