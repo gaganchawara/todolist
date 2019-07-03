@@ -25,10 +25,13 @@ Route::post('/task','TaskController@store')->name('Task.store');
 
 Route::get('/Task/{id}', 'TaskController@show')->name('Task.show');
 
+Route::patch('/task/{id}/update', 'TaskController@update')->name('Task.update');
+
+Route::delete('/task/{id}/delete', 'TaskController@destroy')->name('Task.destroy');
+
 Route::get('/task/create','TaskController@create')->name('Task.create');
 
-//Route::get('/edit/Task','TaskController@create')->name('Task.create');
-
+Route::get('/task/{id}/edit','TaskController@edit')->name('Task.edit');
 
 Route::post('/subtask','SubtaskController@store')->name('Subtask.store');
 

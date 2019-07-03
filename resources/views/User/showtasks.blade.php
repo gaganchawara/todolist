@@ -27,11 +27,11 @@ $tasks = $user->tasks;
       @foreach($tasks as $task)
                     <tr>
 
-                        <td class="pt-3-half" contenteditable="true">{{$task->name}}</td>
+                        <td class="pt-3-half" ><a href="{{route('Task.show',['id'=>$task->id])}}">{{$task->name}}</a></td>
                         <td class="pt-3-half" contenteditable="true">{{$task->user_id}}</td>
                         <td class="pt-3-half" contenteditable="true">{{$task->deadline}}</td>
                         <td>
-              <span class="table-remove"><a href="{{route('Task.create')}}"><button type="button"
+              <span class="table-remove"><a href="{{route('Task.edit',['id'=>$task->id])}}"><button type="button"
                                                  class="btn btn-primary btn-rounded btn-sm my-0">Edit</button></a></span>
                         </td>
                         <td>
