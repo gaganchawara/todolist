@@ -16,12 +16,28 @@
 
                         You are logged in!
                     </div>
-                    <div class="card-header">Dashboard</div>
+{{--                    <div class="card-header">Dashboard</div>--}}
 
+{{--                    <div class="card-body">--}}
+{{--                        <a href="{{route('Task.create')}}">CREATE TASK</a>--}}
+{{--                    </div>--}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                        <div class="card-body">
+                            <a href="{{route('Task.create')}}">CREATE TASK</a>
+                        </div>
+                </div>
+                <div class="card">
                     <div class="card-body">
-                        <a href="{{route('Task.create')}}">CREATE TASK</a>
+                        <a href="{{route('User.tasks')}}">SHOW TASKS</a>
                     </div>
-
                 </div>
             </div>
         </div>

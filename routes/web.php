@@ -19,16 +19,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/user/{id}/task','UserController@index');
+Route::get('/user/tasks','UserController@showtasks')->name('User.tasks');
 
 Route::post('/task','TaskController@store')->name('Task.store');
 
 Route::get('/Task/{id}', 'TaskController@show')->name('Task.show');
 
-Route::get('/create/Task','TaskController@create')->name('Task.create');
+Route::get('/task/create','TaskController@create')->name('Task.create');
 
-Route::post('/Subtask','SubtaskController@store')->name('Subtask.store');
+//Route::get('/edit/Task','TaskController@create')->name('Task.create');
 
-Route::get('/Subtask/{id}', 'SubtaskController@show')->name('Subtask.show');
 
-Route::get('/create/Subtask/{id}','SubtaskController@create')->name('Subtask.create');
+Route::post('/subtask','SubtaskController@store')->name('Subtask.store');
+
+Route::get('/subtask/{id}', 'SubtaskController@show')->name('Subtask.show');
+
+Route::get('/subtask/create/{id}','SubtaskController@create')->name('Subtask.create');
