@@ -31,4 +31,4 @@ Route::post('/Subtask','SubtaskController@store')->name('Subtask.store');
 
 Route::get('/Subtask/{id}', 'SubtaskController@show')->name('Subtask.show');
 
-Route::get('/create/Subtask','SubtaskController@create')->name('Subtask.create');
+Route::get('/create/Subtask/{id}','SubtaskController@create')->name('Subtask.create');

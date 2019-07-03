@@ -11,9 +11,10 @@
                 <div class="card">
 {{--                    <div class="card-header">{{Auth::user()->name}}</div>--}}
 
-                    <div class="card-header">TASK :   {{Task::find($id)->name}}</div>
+                    <div class="card-header">TASK :   {{$task->name}}</div>
+                    <div class="card-header">Deadline :   {{$task->deadline}}</div>
                     <div class="card-body">
-                        <a href="{{route('Subtask.create')}}">CREATE SUBTASK</a>
+                        <a href="{{route('Subtask.create',['id'=>$task->id])}}">CREATE SUBTASK</a>
                     </div>
 
                 </div>

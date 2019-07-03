@@ -9,7 +9,10 @@ class Task extends Model
     //
     protected $fillable = [
         'name',
-        'status'
+        'status',
+        'user_id',
+        'role',
+        'time'
     ];
 
     public function users(){
@@ -18,4 +21,7 @@ class Task extends Model
 //    public function usersone(){
 //        return $this->belongsTo('App\User');
 //    }
+    public function subtasks(){
+        return $this->hasMany('App\Subtask');
+    }
 }

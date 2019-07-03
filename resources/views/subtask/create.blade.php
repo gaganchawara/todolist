@@ -8,10 +8,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('CREATE TAST') }}</div>
+                    <div class="card-header">{{ __('CREATE SubTask') }}</div>
 
+                    <div class="card-header">{{ $task->name }}</div>
                     <div class="card-body">
-                        <form method="POST" action="{{Route('Task.store')}}">
+                        <form method="POST" action="{{Route('Subtask.store')}}">
                             @csrf
 
                             <div class="form-group row">
@@ -44,7 +45,7 @@
                                 </div>
                             </div>
 
-                            <input id="role" type="hidden" class="form-control" name="role" value="Admin">
+                            <input id="task_id" type="hidden" class="form-control" name="task_id" value="{{$task->id}}">
                             <input id="user_id" type="hidden" class="form-control" name="user_id" value="{{Auth::id()}}">
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

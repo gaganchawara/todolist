@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role'
     ];
 
     /**
@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
     public function tasks(){
-        return $this->belongsToMany('App\Task')->withTimestamps();
+        return $this->belongsToMany('App\Task')->withTimestamps()->withPivot('role');
     }
 
 //    public function tasksone(){

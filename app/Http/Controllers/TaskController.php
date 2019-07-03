@@ -11,6 +11,7 @@ class TaskController extends Controller
     public function create(){
         return view('task.create');
     }
+
     public function store(Request $request){
 
         $user = Auth::user();
@@ -18,12 +19,16 @@ class TaskController extends Controller
         $task->name=$request->name;
         $task->status=$request->status;
         $task->user_id=$request->user_id;
+        $task->deadline=$request->deadline;
         $task->save();
         $user->tasks()->attach($task->id,['role'=>'admin']);
-        echo $task->id;
+//        echo $task->id;
         return redirect()->route('Task.show',['id'=>$task->id]);
     }
+
     public function show($id){
-        return view('Task.show',['id'=>$id]);
+        $task = Task::findOrFail($id);
+        return view('Task.show',compact('task'));
     }
 }
+
