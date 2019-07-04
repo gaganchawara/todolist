@@ -32,12 +32,12 @@ use App\User;
                             <td class="pt-3-half" contenteditable="false">{{User::find($subtask->user_id)->name}}</td>
                             <td class="pt-3-half" contenteditable="false">{{$subtask->deadline}}</td>
                             <td>
-              <span class="table-remove"><a href="{{route('Task.edit',['id'=>$task->id])}}"><button type="button"
+              <span class="table-remove"><a href="{{route('Subtask.edit',['id'=>$subtask->id])}}"><button type="button"
                                                                                                     class="btn btn-primary btn-rounded btn-sm my-0">Edit</button></a></span>
                             </td>
                             <td>
 
-                            <span class="table-remove"><form action="{{ route('Task.destroy',['id'=>$task->id])}}" method="post">
+                            <span class="table-remove"><form action="{{ route('Task.destroy',['id'=>$subtask->id])}}" method="post">
                                 <input class="btn btn-danger btn-rounded btn-sm my-0" type="submit" value="Delete" />
                                 @method('delete')
                                     @csrf

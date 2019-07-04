@@ -40,3 +40,7 @@ Route::post('/subtask','SubtaskController@store')->name('Subtask.store');
 Route::get('/subtask/{id}', 'SubtaskController@show')->name('Subtask.show');
 
 Route::get('/subtask/create/{id}','SubtaskController@create')->name('Subtask.create');
+
+Route::get('/subtask/{id}/edit','SubtaskController@edit')->name('Subtask.edit');
+
+Route::patch('/subtask/update', 'SubtaskController@update')->name('Subtask.update');
