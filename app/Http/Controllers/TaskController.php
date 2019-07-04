@@ -69,5 +69,20 @@ class TaskController extends Controller
         return view('task.viewers',compact('task'));
     }
 
+    public function editviewerrole(Request $request){
+        $task = Task::findorFail($request->id);
+        $role=$task->users->find($request->user_id)->pivot->role;
+        if($role==='admin'){
+            $role='viewer';
+        }
+        else{
+            $role='admin';
+        }
+        echo $role;
+        $task->users()->detach($request->user_id);
+        $task->users()->attach($request->user_id,['role'=>$role]);
+        return redirect()->Route('Task.viewers',['id'=>$request->id]);
+    }
+
 }
 

@@ -1,6 +1,7 @@
 <?php
 use App\User;
 $users = User::all();
+$role = 'admin';
 //use App\Task;
 //use Illuminate\Support\Facades\Auth;
 //$subtasks = $task->subtasks;
@@ -21,6 +22,7 @@ $users = User::all();
                         <th class="text-center">User Name</th>
                         <th class="text-center">Email id</th>
                         <th class="text-center">Role</th>
+                        <th class="text-center">Change Role</th>
                         <th class="text-center">Remove</th>
                     </tr>
                     </thead>
@@ -30,6 +32,24 @@ $users = User::all();
                             <td class="pt-3-half" contenteditable="false">{{$user->name}}</td>
                             <td class="pt-3-half" contenteditable="false">{{$user->email}}</td>
                             <td class="pt-3-half" contenteditable="false">{{$user->pivot->role}}</td>
+                            <td class="pt-3-half" contenteditable="false">
+                                <form action="{{Route('viewer.editrole')}}" method = "POST" >
+                                    @csrf
+                                <?php
+                                    if($user->pivot->role=='admin'){
+                                    $rolli = 'Degrade to viewer';
+                                    $role = 'viewer';
+                                    }
+                                    else{
+                                        $rolli = 'Upgrade to admin';
+                                        $role = 'admin';
+                                        }
+                                    ?>
+                                    <input id="id" type="hidden" class="form-control" name="id" value="{{$task->id}}">
+                                    <input id="user_id" type="hidden" class="form-control" name="user_id" value="{{$user->id}}">
+                                    <input class="btn btn-primary btn-rounded btn-sm my-0" type="submit" value="{{$rolli}}" >
+                                </form>
+                            </td>
                             <td>
                             <span class="table-remove"><a href="{{ route('viewer.destroy',['user_id'=>$user->id,'id'=>$task->id])}}" method="post">
                                 <input class="btn btn-danger btn-rounded btn-sm my-0" type="submit" value="Delete" />
@@ -52,7 +72,8 @@ $users = User::all();
                                 </select>
                             </td>
                             <td>
-                                <select name = "role">
+                            <td>
+                                <select name = "role" class="col-sm-5">
                                     <option value="Admin">Admin</option>
                                     <option value="viewer">viewer</option>
                                 </select>
