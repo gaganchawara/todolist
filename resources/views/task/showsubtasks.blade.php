@@ -37,7 +37,7 @@ use App\User;
                             </td>
                             <td>
 
-                            <span class="table-remove"><form action="{{ route('Task.destroy',['id'=>$subtask->id])}}" method="post">
+                            <span class="table-remove"><form action="{{ route('Subtask.destroy',['id'=>$subtask->id])}}" method="post">
                                 <input class="btn btn-danger btn-rounded btn-sm my-0" type="submit" value="Delete" />
                                 @method('delete')
                                     @csrf
@@ -47,6 +47,7 @@ use App\User;
                         </tr>
                     @endforeach
                     </tbody>
+
                 </table>
             </div>
         </div>

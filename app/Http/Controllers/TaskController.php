@@ -32,12 +32,7 @@ class TaskController extends Controller
 
     public function update(Request $request){
         $task = Task::findorFail($request->id);
-        $task->name=$request->name;
-        $task->status=$request->status;
-        $task->user_id=$request->user_id;
-        $task->deadline=$request->deadline;
-//        return $task;
-        $task->save();
+        $task->update($request->all());
         return redirect()->route('Task.show',['id'=>$task->id]);
     }
 

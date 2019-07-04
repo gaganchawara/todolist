@@ -44,3 +44,5 @@ Route::get('/subtask/create/{id}','SubtaskController@create')->name('Subtask.cre
 Route::get('/subtask/{id}/edit','SubtaskController@edit')->name('Subtask.edit');
 
 Route::patch('/subtask/update', 'SubtaskController@update')->name('Subtask.update');
+
+Route::delete('/subtask/{id}/delete', 'SubtaskController@destroy')->name('Subtask.destroy');

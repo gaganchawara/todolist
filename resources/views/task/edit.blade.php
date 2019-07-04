@@ -46,7 +46,7 @@
                             </div>
 
                             <input id="id" type="hidden" class="form-control" name="id" value="{{$id}}">
-                            <input id="role" type="hidden" class="form-control" name="role" value="Admin">
+{{--                            <input id="role" type="hidden" class="form-control" name="role" value="Admin">--}}
                             <input id="user_id" type="hidden" class="form-control" name="user_id" value="{{Auth::id()}}">
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

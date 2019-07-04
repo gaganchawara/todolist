@@ -24,13 +24,8 @@ class SubtaskController extends Controller
     }
 
     public function update(Request $request){
-        $subtask = Subtask::find($request->id);
-        $subtask->name=$request->name;
-        $subtask->status=$request->status;
-        $subtask->user_id=$request->user_id;
-        $subtask->task_id=$request->task_id;
-        $subtask->deadline=$request->deadline;
-        $subtask->save();
+        $subtask = Subtask::findorFail($request->id);
+        $subtask->update($request->all());
         return redirect()->route('Subtask.show',['id'=>$subtask->id]);
     }
 
@@ -42,4 +37,11 @@ class SubtaskController extends Controller
         return view('subtask.edit',['id'=>$id]);
     }
 
+
+    public function destroy($id){
+//        echo "lol";
+        $task_id=Subtask::find($id)->task_id;
+        Subtask::find($id)->delete();
+        return redirect()->route('Task.subtasks',['id'=>$task_id]);
+    }
 }
