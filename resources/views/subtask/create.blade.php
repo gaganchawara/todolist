@@ -1,4 +1,7 @@
-
+<?php
+use App\Task;
+$task = Task::find($id);
+?>
 @extends('layouts.app')
 
 @section('content')

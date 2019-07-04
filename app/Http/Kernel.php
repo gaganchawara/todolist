@@ -61,7 +61,9 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'isAdmin' => \App\Http\Middleware\isAdmin::class,
-        'isRelatedtoTask' => \App\Http\Middleware\isRelatedtoTask::class
+        'isRelatedtoTask' => \App\Http\Middleware\isRelatedtoTask::class,
+        'isAdminSubtask' => \App\Http\Middleware\isAdminSubtask::class,
+        'isRelatedtoSubtask' => \App\Http\Middleware\isRelatedtoSubtask::class
     ];
 
     /**

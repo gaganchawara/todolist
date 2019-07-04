@@ -13,7 +13,7 @@ class SubtaskController extends Controller
 //        return "hi";
 //        return $id;
         $task = Task::findOrFail($id);
-        return view('subtask.create',compact('task'));
+        return view('subtask.create',['id'=>$task->id]);
     }
 
     public function store(Request $request){
