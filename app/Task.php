@@ -16,7 +16,7 @@ class Task extends Model
     ];
 
     public function users(){
-        return $this->belongsToMany('App\User')->withTimestamps();
+        return $this->belongsToMany('App\User')->withPivot('role')->withTimestamps();
     }
 //    public function usersone(){
 //        return $this->belongsTo('App\User');

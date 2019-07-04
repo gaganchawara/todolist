@@ -32,7 +32,7 @@ $subtask = Subtask::find($id);
                             @method('delete')
                             @csrf
                         </form>
-                </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -51,5 +51,14 @@ class TaskController extends Controller
         $task = Task::find($id);
         return view('task.showsubtasks',compact('task'));
     }
+
+    public function viewers($id){
+        $task = Task::find($id);
+        return view('task.viewers',compact('task'));
+    }
+    public function desviewer(){
+        echo "will destroy viewer";
+    }
+
 }
 

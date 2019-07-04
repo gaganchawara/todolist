@@ -33,6 +33,10 @@ Route::get('/task/create','TaskController@create')->name('Task.create');
 
 Route::get('/task/{id}/edit','TaskController@edit')->name('Task.edit');
 
+Route::get('/task/{id}/viewers','TaskController@viewers')->name('Task.viewers');
+
+Route::get('/task/{id}/desviewer/{user_id}','TaskController@desviewer')->name('viewer.destroy');
+
 Route::get('/task/{id}/subtasks','TaskController@showsubtasks')->name('Task.subtasks');
 
 Route::post('/subtask','SubtaskController@store')->name('Subtask.store');
