@@ -1,6 +1,7 @@
 <?php
 use App\User;
-//use App\Task;
+use App\Task;
+$task = Task::findorfail($id);
 //use Illuminate\Support\Facades\Auth;
 //$subtasks = $task->subtasks;
 //$tasks = $user->tasks;

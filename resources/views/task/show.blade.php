@@ -1,6 +1,7 @@
 {{--@include(App\Task)--}}
 <?php
         use App\Task;
+        $task = Task::findorFail($id);
         use App\User;
 ?>
 @extends('layouts.app')

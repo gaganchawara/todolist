@@ -38,7 +38,7 @@ class TaskController extends Controller
 
     public function show($id){
         $task = Task::findOrFail($id);
-        return view('Task.show',compact('task'));
+        return view('Task.show',['id'=>$task->id]);
     }
 
     public function destroy($id){
@@ -49,12 +49,12 @@ class TaskController extends Controller
 
     public function showsubtasks($id){
         $task = Task::find($id);
-        return view('task.showsubtasks',compact('task'));
+        return view('task.showsubtasks',['id'=>$task->id]);
     }
 
     public function viewers($id){
         $task = Task::find($id);
-        return view('task.viewers',compact('task'));
+        return view('task.viewers',['id'=>$task->id]);
     }
 
     public function desviewer($id,$user_id){

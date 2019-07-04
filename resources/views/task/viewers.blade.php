@@ -1,5 +1,7 @@
 <?php
 use App\User;
+use App\Task;
+$task = Task::findorfail($id);
 $users = User::all();
 $role = 'admin';
 //use App\Task;
