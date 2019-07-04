@@ -12,8 +12,8 @@ use App\User;
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">{{$task->name}}</h3>
         <div class="card-body">
             <div id="table" class="table-editable">
-      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
-                      class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+                <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success">
+                    <i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
                 <table class="table table-bordered table-responsive-md table-striped text-center">
                     <thead>
                     <tr>
@@ -28,14 +28,13 @@ use App\User;
                     <tbody>
                     @foreach($task->subtasks as $subtask)
                         <tr>
-
                             <td class="pt-3-half" ><a href="{{route('Subtask.show',['id'=>$subtask->id])}}">{{$subtask->name}}</a></td>
                             <td class="pt-3-half" contenteditable="false">{{User::find($subtask->user_id)->name}}</td>
                             <td class="pt-3-half" contenteditable="false">{{$subtask->deadline}}</td>
                             <td class="pt-3-half" contenteditable="false">{{$subtask->status}}</td>
                             <td>
-              <span class="table-remove"><a href="{{route('Subtask.edit',['id'=>$subtask->id])}}"><button type="button"
-                                                                                                    class="btn btn-primary btn-rounded btn-sm my-0">Edit</button></a></span>
+                                <span class="table-remove"><a href="{{route('Subtask.edit',['id'=>$subtask->id])}}"><button type="button"
+                                        class="btn btn-primary btn-rounded btn-sm my-0">Edit</button></a></span>
                             </td>
                             <td>
 
