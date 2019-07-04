@@ -16,8 +16,13 @@
                     <div class="card-body">
                         <a href="{{route('Subtask.create',['id'=>$task->id])}}">CREATE SUBTASK</a>
                     </div>
-
                 </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="{{route('Task.subtasks',['id'=>$task->id])}}">SHOW SUBTASKS</a>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

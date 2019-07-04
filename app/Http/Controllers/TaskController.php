@@ -51,5 +51,10 @@ class TaskController extends Controller
         Task::find($id)->delete();
         return redirect()->route('User.tasks');
     }
+
+    public function showsubtasks($id){
+        $task = Task::find($id);
+        return view('task.showsubtasks',compact('task'));
+    }
 }
 
