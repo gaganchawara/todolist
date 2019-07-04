@@ -56,8 +56,12 @@ class TaskController extends Controller
         $task = Task::find($id);
         return view('task.viewers',compact('task'));
     }
-    public function desviewer(){
-        echo "will destroy viewer";
+    public function desviewer($id,$user_id){
+        $task = Task::find($id);
+        $task->users()->detach($user_id);
+        return view('task.viewers',compact('task'));
+
+//        echo "will destroy viewer";
     }
 
 }

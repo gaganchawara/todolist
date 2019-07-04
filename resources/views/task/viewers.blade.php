@@ -32,8 +32,8 @@ use App\User;
                             <td>
                             <span class="table-remove"><a href="{{ route('viewer.destroy',['user_id'=>$user->id,'id'=>$task->id])}}" method="post">
                                 <input class="btn btn-danger btn-rounded btn-sm my-0" type="submit" value="Delete" />
-                                    @csrf
-                            </form></span>
+                                </a>
+                            </span>
 
                             </td>
                         </tr>
