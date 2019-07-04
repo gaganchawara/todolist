@@ -20,6 +20,7 @@ use App\User;
                         <th class="text-center">Subtask Name</th>
                         <th class="text-center">Created/Updated by</th>
                         <th class="text-center">Deadline</th>
+                        <th class="text-center">Status</th>
                         <th class="text-center">Edit</th>
                         <th class="text-center">Remove</th>
                     </tr>
@@ -31,6 +32,7 @@ use App\User;
                             <td class="pt-3-half" ><a href="{{route('Subtask.show',['id'=>$subtask->id])}}">{{$subtask->name}}</a></td>
                             <td class="pt-3-half" contenteditable="false">{{User::find($subtask->user_id)->name}}</td>
                             <td class="pt-3-half" contenteditable="false">{{$subtask->deadline}}</td>
+                            <td class="pt-3-half" contenteditable="false">{{$subtask->status}}</td>
                             <td>
               <span class="table-remove"><a href="{{route('Subtask.edit',['id'=>$subtask->id])}}"><button type="button"
                                                                                                     class="btn btn-primary btn-rounded btn-sm my-0">Edit</button></a></span>
@@ -47,7 +49,32 @@ use App\User;
                         </tr>
                     @endforeach
                     </tbody>
+                    <tr>
+                        <form method="POST" action="{{Route('Subtask.store')}}">
+                            @csrf
 
+                            <td class="pt-3-half" ><input id="name" type="text" class="form-control" name="name"></td>
+                        <td class="pt-3-half" contenteditable="false">{{User::find($subtask->user_id)->name}}</td>
+                        <td class="pt-3-half" contenteditable="false"><input type="datetime-local" name="deadline"></td>
+                        <td>
+                            <select name = "status">--}}
+                                <option value="Pending">Pending</option>
+                                <option value="In process">In Process</option>
+                                <option value="Done">Done</option>
+                            </select>
+                        </td>
+                            <td>
+                        <td>
+                            <span class="table-remove">
+                                <button type="submit" class="btn btn-primary">
+                                        {{ __('CREATE TASK') }}
+                                    </button>
+                            </span>
+                        </td></td>
+                            <input id="task_id" type="hidden" class="form-control" name="task_id" value="{{$task->id}}">
+                            <input id="user_id" type="hidden" class="form-control" name="user_id" value="{{Auth::id()}}">
+                        </form>
+                    </tr>
                 </table>
             </div>
         </div>
