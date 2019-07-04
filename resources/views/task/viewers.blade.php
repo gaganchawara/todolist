@@ -1,5 +1,6 @@
 <?php
 use App\User;
+$users = User::all();
 //use App\Task;
 //use Illuminate\Support\Facades\Auth;
 //$subtasks = $task->subtasks;
@@ -40,30 +41,32 @@ use App\User;
                     @endforeach
                     </tbody>
                     <tr>
-{{--                        <form method="POST" action="{{Route('Subtask.store')}}">--}}
-{{--                            @csrf--}}
+                        <form method="POST" action="{{Route('viewer.add')}}">
+                            @csrf
 
-{{--                            <td class="pt-3-half" ><input id="name" type="text" class="form-control" name="name"></td>--}}
-{{--                            <td class="pt-3-half" contenteditable="false">{{User::find($subtask->user_id)->name}}</td>--}}
-{{--                            <td class="pt-3-half" contenteditable="false"><input type="datetime-local" name="deadline"></td>--}}
-{{--                            <td>--}}
-{{--                                <select name = "status">--}}
-{{--                                    <option value="Pending">Pending</option>--}}
-{{--                                    <option value="In process">In Process</option>--}}
-{{--                                    <option value="Done">Done</option>--}}
-{{--                                </select>--}}
-{{--                            </td>--}}
-{{--                            <td>--}}
-{{--                            <td>--}}
-{{--                            <span class="table-remove">--}}
-{{--                                <button type="submit" class="btn btn-primary">--}}
-{{--                                        {{ __('CREATE TASK') }}--}}
-{{--                                    </button>--}}
-{{--                            </span>--}}
-{{--                            </td></td>--}}
-{{--                            <input id="task_id" type="hidden" class="form-control" name="task_id" value="{{$task->id}}">--}}
-{{--                            <input id="user_id" type="hidden" class="form-control" name="user_id" value="{{Auth::id()}}">--}}
-{{--                        </form>--}}
+                            <td class="pt-3-half" >
+                                <select name = "user_id">
+                                    @foreach($users as $user)
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <select name = "role">
+                                    <option value="Admin">Admin</option>
+                                    <option value="viewer">viewer</option>
+                                </select>
+                            </td>
+                            <td>
+                            <td>
+                            <span class="table-remove">
+                                <button type="submit" class="btn btn-primary">
+                                        {{ __('ADD VIEWER') }}
+                                    </button>
+                            </span>
+                            </td></td>
+                            <input id="id" type="hidden" class="form-control" name="id" value="{{$task->id}}">
+                        </form>
                     </tr>
                 </table>
             </div>

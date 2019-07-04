@@ -37,6 +37,8 @@ Route::get('/task/{id}/viewers','TaskController@viewers')->name('Task.viewers');
 
 Route::get('/task/{id}/desviewer/{user_id}','TaskController@desviewer')->name('viewer.destroy');
 
+Route::POST('/task_viewer','TaskController@addviewer')->name('viewer.add');
+
 Route::get('/task/{id}/subtasks','TaskController@showsubtasks')->name('Task.subtasks');
 
 Route::post('/subtask','SubtaskController@store')->name('Subtask.store');
