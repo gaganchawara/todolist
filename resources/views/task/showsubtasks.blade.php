@@ -66,7 +66,7 @@ use App\User;
                         <td>
                             <span class="table-remove">
                                 <button type="submit" class="btn btn-primary">
-                                        {{ __('CREATE TASK') }}
+                                        {{ __('CREATE SUBTASK') }}
                                     </button>
                             </span>
                         </td></td>
@@ -77,5 +77,9 @@ use App\User;
                 </table>
             </div>
         </div>
+    </div>
+    <br>
+    <div class="col-sm-6">
+        <a href="{{route('Task.show',['id'=>$subtask->task_id])}}"><button type="button" class="btn btn-primary col-md-8">BACK</button></a>
     </div>
 @endsection

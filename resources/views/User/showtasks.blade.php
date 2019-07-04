@@ -1,5 +1,6 @@
 <?php
 use App\Task;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 $user = Auth::user();
 $tasks = $user->tasks;
@@ -28,7 +29,7 @@ $tasks = $user->tasks;
                     <tr>
 
                         <td class="pt-3-half" ><a href="{{route('Task.show',['id'=>$task->id])}}">{{$task->name}}</a></td>
-                        <td class="pt-3-half" contenteditable="true">{{$task->user_id}}</td>
+                        <td class="pt-3-half" contenteditable="true">{{User::find($task->user_id)->name}}</td>
                         <td class="pt-3-half" contenteditable="true">{{$task->deadline}}</td>
                         <td>
               <span class="table-remove"><a href="{{route('Task.edit',['id'=>$task->id])}}"><button type="button"
@@ -49,5 +50,9 @@ $tasks = $user->tasks;
                 </table>
             </div>
         </div>
+    </div>
+    <br>
+    <div class="col-sm-6">
+        <a href="{{route('home')}}"><button type="button" class="btn .btn-info col-md-8">BACK</button></a>
     </div>
 @endsection

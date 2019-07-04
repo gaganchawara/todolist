@@ -31,6 +31,7 @@
                         <a href="{{route('Task.viewers',['id'=>$task->id])}}">SHOW VIEWERS</a>
                     </div>
                 </div>
+                <br>
                 <div class="row">
                     <div class="col-sm-6">
                         <a href="{{route('Task.edit',['id'=>$task->id])}}"><button type="button" class="btn btn-primary col-md-12">Edit</button></a>
@@ -41,6 +42,11 @@
                             @method('delete')
                             @csrf
                         </form>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-sm-6">
+                        <a href="{{route('User.tasks')}}"><button type="button" class="btn btn-primary col-md-12">SHOW TASKS</button></a>
                     </div>
                 </div>
             </div>

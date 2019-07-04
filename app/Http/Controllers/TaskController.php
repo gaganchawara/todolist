@@ -60,13 +60,13 @@ class TaskController extends Controller
     public function desviewer($id,$user_id){
         $task = Task::find($id);
         $task->users()->detach($user_id);
-        return view('task.viewers',compact('task'));
+        return redirect()->Route('Task.viewers',['id'=>$id]);
     }
 
     public function addviewer(Request $request){
         $task = Task::findorFail($request->id);
         $task->users()->attach($request->user_id,['role'=>$request->role]);
-        return view('task.viewers',compact('task'));
+        return redirect()->Route('Task.viewers',['id'=>$request->id]);
     }
 
     public function editviewerrole(Request $request){
