@@ -2,7 +2,7 @@
 use App\User;
 use App\Task;
 $task = Task::findorfail($id);
-//use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 //$subtasks = $task->subtasks;
 //$tasks = $user->tasks;
 ?>

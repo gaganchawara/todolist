@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Input;
+use App\Subtask;
+use Illuminate\Support\Facades\Auth;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,3 +45,12 @@ Auth::routes();
     Route::get('/subtask/{id}/edit','SubtaskController@edit')->name('Subtask.edit')->middleware('isAdminSubtask');
     Route::patch('/subtask/update', 'SubtaskController@update')->name('Subtask.update');
     Route::delete('/subtask/{id}/delete', 'SubtaskController@destroy')->name('Subtask.destroy')->middleware('isAdminSubtask');
+
+    Route::any('/search',function(){
+        $user = Auth::user();
+    $q = Input::get ( 'q' );
+    $subtask = Subtask::where('name','LIKE','%'.$q.'%')->get();
+    if(count($subtask) > 0)
+        return view('subtasksearch')->withDetails($subtask)->withQuery ( $q );
+    else return view ('subtasksearch')->withMessage('No Details found. Try to search again !');
+});
