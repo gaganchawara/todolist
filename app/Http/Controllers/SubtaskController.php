@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class SubtaskController extends Controller
 {
     public function create($id){
-//        return "hi";
-//        return $id;
         $task = Task::findOrFail($id);
         return view('subtask.create',['id'=>$task->id]);
     }

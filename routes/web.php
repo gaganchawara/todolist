@@ -33,7 +33,6 @@ Auth::routes();
 
         Route::get('/task/{id}/subtasks','TaskController@showsubtasks')->name('Task.subtasks');
 
-        Route::post('/subtask','SubtaskController@store')->name('Subtask.store');
 
         Route::middleware(['isAdmin'])->group(function (){
             Route::get('/task/{id}/edit','TaskController@edit')->name('Task.edit');
@@ -46,6 +45,7 @@ Auth::routes();
 
 
             Route::get('/subtask/create/{id}','SubtaskController@create')->name('Subtask.create');
+
         });
     });
 
@@ -62,11 +62,9 @@ Route::middleware(['isRelatedtoSubtask'])->group( function() {
         Route::delete('/subtask/{id}/delete', 'SubtaskController@destroy')->name('Subtask.destroy');
     });
 });
-
+    Route::post('/subtask','SubtaskController@store')->name('Subtask.store');
     Route::post('/task','TaskController@store')->name('Task.store');
     Route::get('/task/create','TaskController@create')->name('Task.create');
-
-
 
     Route::any('/search',function(){
         $user = Auth::user();
