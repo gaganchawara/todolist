@@ -73,7 +73,14 @@
         </nav>
 
         <main class="py-4">
+            @if($errors->any())<style>
+                h1 {color:red;}
+                p {color:red;}
+            </style>
+            <p color="red">&nbsp&nbsp&nbsp&nbsp&nbsp{{$errors->first()}}</p>
+            @endif
             @yield('content')
+
         </main>
     </div>
 </body>

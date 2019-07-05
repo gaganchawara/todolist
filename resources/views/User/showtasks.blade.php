@@ -8,6 +8,7 @@ $tasks = $user->tasks;
 @extends('layouts.app')
 
 @section('content')
+
     <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">TASKS</h3>
         <div class="card-body">
@@ -37,11 +38,15 @@ $tasks = $user->tasks;
                         </td>
                         <td>
 
-                            <span class="table-remove"><form action="{{ route('Task.destroy',['id'=>$task->id])}}" method="post">
+                            <span class="table-remove">
+
+                                <form action="{{ route('Task.destroy',['id'=>$task->id])}}" method="post">
                                 <input class="btn btn-danger btn-rounded btn-sm my-0" type="submit" value="Delete" />
                                 @method('delete')
                                 @csrf
-                            </form></span>
+                            </form>
+
+                            </span>
 
                         </td>
                     </tr>

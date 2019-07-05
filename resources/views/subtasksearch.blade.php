@@ -52,6 +52,8 @@ $tasks = $user->tasks;
                     @endforeach
                     </tbody>
                 </table>
+            @else
+                    No Details found. Try to search again !
             @endif
         </div>
 @endsection

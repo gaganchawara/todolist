@@ -6,6 +6,7 @@ use Closure;
 use App\Task;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 
 class isAdmin
@@ -24,7 +25,7 @@ class isAdmin
         $task=Task::find($request->id);
         $role=$task->users->find($user->id)->pivot->role;
         if($role!='admin'){
-            return redirect(route('User.tasks'));
+            return Redirect::back()->withErrors([' You have to be an Admin to do that']);
         }
         return $next($request);
     }

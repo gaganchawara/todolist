@@ -21,7 +21,7 @@ class isRelatedtoTask
         $user = Auth::user();
         $exists = $user->tasks->contains($request->id);
         if(!$exists){
-            return redirect(route('User.tasks'));
+            return redirect(route('User.tasks'))->withErrors([' You are not authorised to do that. Ask admin for the rights.']);
         }
         return $next($request);
     }
