@@ -54,7 +54,7 @@ use Illuminate\Support\Facades\Auth;
                             @csrf
 
                             <td class="pt-3-half" ><input id="name" type="text" class="form-control" name="name"></td>
-                        <td class="pt-3-half" contenteditable="false">{{User::find($subtask->user_id)->name}}</td>
+                        <td class="pt-3-half" contenteditable="false">{{Auth::user()->name}}</td>
                         <td class="pt-3-half" contenteditable="false"><input type="datetime-local" name="deadline"></td>
                         <td>
                             <select name = "status">--}}
@@ -81,6 +81,6 @@ use Illuminate\Support\Facades\Auth;
     </div>
     <br>
     <div class="col-sm-6">
-        <a href="{{route('Task.show',['id'=>$subtask->task_id])}}"><button type="button" class="btn btn-primary col-md-8">BACK</button></a>
+        <a href="{{route('Task.show',['id'=>$id])}}"><button type="button" class="btn btn-primary col-md-8">BACK</button></a>
     </div>
 @endsection

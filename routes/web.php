@@ -25,7 +25,7 @@ Auth::routes();
 
     Route::get('/user/tasks','UserController@showtasks')->name('User.tasks');
 
-    Route::post('/task','TaskController@store')->name('Task.store')->middleware('isRelatedtoTask');
+    Route::post('/task','TaskController@store')->name('Task.store');
     Route::get('/Task/{id}', 'TaskController@show')->name('Task.show')->middleware('isRelatedtoTask');
     Route::get('/task/create','TaskController@create')->name('Task.create');
     Route::get('/task/{id}/edit','TaskController@edit')->name('Task.edit')->middleware('isRelatedtoTask')->middleware('isAdmin');
@@ -48,34 +48,12 @@ Auth::routes();
 
     Route::any('/search',function(){
         $user = Auth::user();
-    $q = Input::get ( 'q' );
-
-//        $user->podcasts()
-//            ->with([
-//                'audioFiles' => function ($query) {
-//                    return $query->orderBy('created_at', 'desc');
-//                }
-//            ])
-//            ->get();
-
-//    $subtask = Subtask::where('name','LIKE','%'.$q.'%')->get();
-//    echo $user->name;
-//        $subtask = $user->tasks()->with(['subtasks'=>function($query){return $query->orderBy('created_at', 'desc');}])->where('name','LIKE','%'.$q.'%')->get();
-
-//        $subtask = $user->tasks()->subtasks();
-
-
-//        $subtask = $user->tasks()->with(['subtasks'=>function($query){return $query;}])->get();
-
+        $q = Input::get ( 'q' );
         $subtask =Subtask::whereHas('task', function($query) use ($user) {
             return $query->whereHas('users', function($query) use ($user) {
                 return $query->where('user_id', $user->id);
             });
         })->where('name','LIKE','%'.$q.'%')->orderBy('created_at', 'desc')->get();
-
-//        foreach($subtask as $sub){
-//            echo $sub . "<br><br>";
-//        }
 
     if(count($subtask) > 0)
         return view('subtasksearch')->withDetails($subtask)->withQuery ( $q );
