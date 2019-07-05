@@ -20,6 +20,7 @@ $tasks = $user->tasks;
                         <th class="text-center">Subtask Name</th>
                         <th class="text-center">Created/Updated by</th>
                         <th class="text-center">Deadline</th>
+                        <th class="text-center">Task</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Edit</th>
                         <th class="text-center">Remove</th>
@@ -32,6 +33,7 @@ $tasks = $user->tasks;
                             <td class="pt-3-half" ><a href="{{route('Subtask.show',['id'=>$subtask->id])}}">{{$subtask->name}}</a></td>
                             <td class="pt-3-half" contenteditable="false">{{User::find($subtask->user_id)->name}}</td>
                             <td class="pt-3-half" contenteditable="false">{{$subtask->deadline}}</td>
+                            <td class="pt-3-half" contenteditable="false">{{Task::find($subtask->task_id)->name}}</td>
                             <td class="pt-3-half" contenteditable="false">{{$subtask->status}}</td>
                             <td>
                                 <span class="table-remove"><a href="{{route('Subtask.edit',['id'=>$subtask->id])}}"><button type="button"

@@ -49,7 +49,34 @@ Auth::routes();
     Route::any('/search',function(){
         $user = Auth::user();
     $q = Input::get ( 'q' );
-    $subtask = Subtask::where('name','LIKE','%'.$q.'%')->get();
+
+//        $user->podcasts()
+//            ->with([
+//                'audioFiles' => function ($query) {
+//                    return $query->orderBy('created_at', 'desc');
+//                }
+//            ])
+//            ->get();
+
+//    $subtask = Subtask::where('name','LIKE','%'.$q.'%')->get();
+//    echo $user->name;
+//        $subtask = $user->tasks()->with(['subtasks'=>function($query){return $query->orderBy('created_at', 'desc');}])->where('name','LIKE','%'.$q.'%')->get();
+
+//        $subtask = $user->tasks()->subtasks();
+
+
+//        $subtask = $user->tasks()->with(['subtasks'=>function($query){return $query;}])->get();
+
+        $subtask =Subtask::whereHas('task', function($query) use ($user) {
+            return $query->whereHas('users', function($query) use ($user) {
+                return $query->where('user_id', $user->id);
+            });
+        })->where('name','LIKE','%'.$q.'%')->orderBy('created_at', 'desc')->get();
+
+//        foreach($subtask as $sub){
+//            echo $sub . "<br><br>";
+//        }
+
     if(count($subtask) > 0)
         return view('subtasksearch')->withDetails($subtask)->withQuery ( $q );
     else return view ('subtasksearch')->withMessage('No Details found. Try to search again !');
