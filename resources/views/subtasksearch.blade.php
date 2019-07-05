@@ -12,18 +12,17 @@ $tasks = $user->tasks;
 
         <div class="container">
             @if(isset($details))
-                <p> The Search results for your query <b> {{ $query }} </b> are :</p>
-                <h2>Sample User details</h2>
+                <h4> The Search results for your query <b> {{ $query }} </b> are :</h4>
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th class="text-center">Subtask Name</th>
-                        <th class="text-center">Created/Updated by</th>
-                        <th class="text-center">Deadline</th>
-                        <th class="text-center">Task</th>
-                        <th class="text-center">Status</th>
-                        <th class="text-center">Edit</th>
-                        <th class="text-center">Remove</th>
+                        <th>Subtask Name</th>
+                        <th>Created/Updated by</th>
+                        <th>Deadline</th>
+                        <th>Task</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                        <th>Remove</th>
                     </tr>
                     </thead>
                     <tbody>
